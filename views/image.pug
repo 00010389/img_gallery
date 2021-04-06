@@ -1,0 +1,7 @@
+extend layout
+
+block content
+	h1= note.title
+		a(href="/notes/" + note.id + "/archive").small-button Archive
+
+	p= note.body

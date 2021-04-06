@@ -1,0 +1,21 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title IMAGE GALLERY
+  link(rel='stylesheet' href='/assets/stylesheets/styles.css')
+header
+  a.logo(href='/')
+    img(src='/assets/images/gallery.svg' alt='logo')
+  a(href='/images/new')
+    button.add_img Add image
+  nav
+    ul.nav__links
+      li
+        a(href='/images') All images
+      li
+        a(href='/archive') Archive
+main
+  block content
+footer This web application was created to fulfill Web Technology module's requirements and does not represent an actual company or service

@@ -1,0 +1,20 @@
+*{
+    /*margin: 0;*/
+    padding: 0;
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+}
+p{
+    margin-left: 1.66%;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #f1f1f1;
+    width: 30%;
+    font-size: 1.45em;
+    text-transform: uppercase;
+    font-weight: 900; /* 100-800 */
+}
+img{
+    float: left;   /* To make margin work properly, use float. It takes out extra space between img elements */
+    margin: 1.66%; /* which was created by default by html. */
+    width: 30%;
+}
