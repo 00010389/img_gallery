@@ -1,7 +1,8 @@
 extend layout
 
 block content
-	h1= note.title
-		a(href="/notes/" + note.id + "/archive").small-button Archive
-
-	p= note.body
+	h1.header= image.title
+	div.container
+		img(src=`${image.link}`).img_one
+		a(href="/images/" + image.id + "/delete").btn_delete Delete
+		a(href="/images/" + image.id + "/archive").btn_archive Archive
