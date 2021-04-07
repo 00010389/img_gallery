@@ -3,6 +3,7 @@ const app = express();
 const fs = require("fs");
 const PORT = 3000;
 
+// initializing our db via parsing our json file
 let imagesDb = [];
 
 fs.readFile("./database/images.json", (err, data) => {
@@ -11,6 +12,7 @@ fs.readFile("./database/images.json", (err, data) => {
   }
 });
 
+// initializing body-parser, assets, template engine
 const parser = require("body-parser");
 app.use(parser.urlencoded({ extended: true }));
 
@@ -35,14 +37,15 @@ function generateRandomId() {
 
 // Post request to create new image, then redirect somewhere
 app.post("/images", (req, res) => {
-  // get the sent data
+  // create new image
   const image = {
     id: generateRandomId(),
     title: req.body.title,
     link: req.body.link,
+    archived: false,
   };
 
-  // store it somewhere
+  // store it somewhere, then redirect user back
   imagesDb.push(image);
   fs.writeFile("./database/images.json", JSON.stringify(imagesDb), (err) => {
     if (err) {
@@ -51,13 +54,12 @@ app.post("/images", (req, res) => {
       res.redirect("/images/new?success=1");
     }
   });
-
-  // redirect user back
 });
 
 // Get request to list all images
 app.get("/images", (req, res) => {
-  res.render("images", { images: imagesDb });
+  const images = imagesDb.filter((image) => !image.archived);
+  res.render("images", { images: images });
 });
 
 // Get request to show one specific image
@@ -66,6 +68,32 @@ app.get("/images/:id", (req, res) => {
   const image = imagesDb.find((image) => image.id === id) || null;
 
   res.render("image", { image: image });
+});
+
+// Get request to specific archived image
+app.get("/images/archive/:id", (req, res) => {
+  const id = parseInt(req.params.id);
+  const image = imagesDb.find((image) => image.id === id) || null;
+
+  res.render("archived-img", { image: image });
+});
+
+// Get request to archived image delete button
+app.get("/images/archive/:id/delete", (req, res) => {
+  const id = parseInt(req.params.id);
+  const index = imagesDb.findIndex((image) => image.id === id);
+
+  // Delete from imagesDb array
+  imagesDb.splice(index, 1);
+
+  // Update images.json file
+  fs.writeFile("./database/images.json", JSON.stringify(imagesDb), (err) => {
+    if (err) {
+      res.redirect("/archive?success=0");
+    } else {
+      res.redirect("/archive?success=1");
+    }
+  });
 });
 
 // Get request to delete a particular image, then redirect somewhere
