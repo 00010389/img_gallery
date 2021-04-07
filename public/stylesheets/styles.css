@@ -104,12 +104,93 @@ footer {
 
 /* images.pug */
 .img {
-  float: left; /* To make margin work properly, I use float. It takes out extra space between img elements */
-  margin: 1.66%; /* which was created by default by html. */
-  width: 30%;
+  width: 25rem;
+  height: 30rem;
+  margin: 1rem;
 }
 
-.img:hover {
-  transform: scale(1.2, 1.2);
-  opacity: 0.5;
+.images {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+/* image.pug */
+.header {
+  text-align: center;
+  margin: 2rem auto;
+}
+
+.container {
+  height: 50%;
+  width: min-content;
+  margin: auto;
+}
+
+.img_one {
+  display: block;
+  width: 50vw;
+  height: 80vh;
+}
+
+.btn_archive,
+.btn_delete {
+  border-radius: 50px;
+  background-color: #b22222;
+  padding: 16px;
+  margin: 16px;
+  cursor: default;
+  color: #fff;
+  float: right;
+}
+
+.container::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.btn_archive:hover,
+.btn_delete:hover {
+  opacity: 0.9;
+}
+
+.btn_archive {
+  background-color: #ffff00;
+}
+
+/* new.pug */
+.msg {
+  padding: 16px;
+  color: #228b22;
+  width: 7rem;
+  text-align: center;
+  margin: 16px auto;
+}
+
+.btn_add {
+  float: right;
+  padding: 8px 16px;
+  outline: none;
+  border: none;
+  color: #fff;
+  border-radius: 3px;
+  background-color: #000080;
+}
+
+.btn_add:hover {
+  opacity: 0.8;
+}
+
+form {
+  width: 65vw;
+  min-height: 75vh;
+}
+
+form > * {
+  margin: 16px 0;
+  display: block;
+}
+
+input[type="text"] {
+  width: 100%;
 }
