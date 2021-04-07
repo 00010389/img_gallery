@@ -1,10 +1,7 @@
 extend layout
 
 block content
-	//- ul.notes-list
-	//- 	each image in images
-	//- 		li
-	//- 			a(href="/notes/" + image.id)= image.title
-	//- 			a(href="/notes/" + image.id + "/delete").btn_delete Delete
-	each image in images
-		img(src="#{image.link}")
+	div.images
+		each image in images
+			a(href="/images/" + image.id)
+				img(src=`${image.link}`).img
