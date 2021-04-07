@@ -30,3 +30,5 @@ In order to run the app, you should follow the instructions below:
 # Here is repository link of Image Gallery app on github:
 
     link: (https://github.com/00010389/img_gallery)
+# Here is repository link of Image Gallery app on glitch:
+    link: (https://frosted-rich-driver.glitch.me/)
