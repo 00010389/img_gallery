@@ -1,0 +1,7 @@
+extend layout
+
+block content
+	h1.header= image.title
+	div.container
+		img(src=`${image.link}`).img_one
+		a(href="/images/archive" + image.id + "/delete").btn_delete Delete
