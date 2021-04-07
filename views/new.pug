@@ -1,16 +1,17 @@
 extend layout
 
 block content
-  h2 Add New Image
+  h2.header Add New Image
 
   if show
-    div.message Your image was successfully added.
+    div.msg Success!
   
-  form(method="post" action="/images")
-    label(for="title") Title
-    input(type="text" name="title" id="title")
+  div.container
+    form(method="post" action="/images")
+      label(for="title") Title
+      input(type="text" name="title" id="title")
 
-    label(for="link") Link
-    input(type="text" name="link" id="link")
+      label(for="link") Link
+      input(type="text" name="link" id="link")
 
-    input(type="submit" value="Add")
+      input(type="submit" value="Add").btn_add
