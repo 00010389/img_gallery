@@ -1,17 +1,6 @@
 extend layout
 
 block content
-	h1.head All images
-	table.posts
-		tr
-			th Title
-			th Link
-			th Options
-		each image in images
-			tr
-				td
-					a(href="/").table-links= image.title
-				td
-					a(href="/posts/" + post.id).table-links= image.link
-				td
-					a(href="/posts/" + post.id + "/delete").btn.btn-delete Delete
+	each image in images
+		a(href="/images/archive/" + image.id)
+			img(src=`${image.link}`).img
